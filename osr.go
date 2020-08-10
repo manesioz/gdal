@@ -1174,6 +1174,6 @@ func (ct CoordinateTransform) Destroy() {
 }
 
 func (ct CoordinateTransform) Transform(numPoints int, xPoints []float64, yPoints []float64, zPoints []float64) bool {
-	val := C.OCTTransform(ct.cval, C.int(numPoints), unsafe.Pointer(&xPoints[0]), unsafe.Pointer(&yPoints[0]), unsafe.Pointer(&zPoints[0]))
+	val := C.OCTTransform(ct.cval, C.int(numPoints), (*C.double)(unsafe.Pointer(&xPoints[0])), (*C.double)(unsafe.Pointer(&yPoints[0])), (*C.double)(unsafe.Pointer(&zPoints[0])))
 	return int(val) != 0
 }
