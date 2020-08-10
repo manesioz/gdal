@@ -1280,7 +1280,7 @@ func (feature Feature) SetFieldBinary(index int, value []uint8) {
 		feature.cval,
 		C.int(index),
 		C.int(len(value)),
-		(*C.uchar)(unsafe.Pointer(&value[0])),
+		unsafe.Pointer(&value[0]),
 	)
 }
 
